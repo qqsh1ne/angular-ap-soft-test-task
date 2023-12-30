@@ -1,4 +1,12 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {
+  afterRender,
+  AfterRenderPhase,
+  ChangeDetectorRef,
+  Component,
+  OnChanges,
+  OnInit,
+  SimpleChanges
+} from '@angular/core';
 import {DataService} from "../../services/data.service";
 
 @Component({
@@ -15,22 +23,30 @@ export class BoardComponent implements OnInit {
     console.log(value);
     this._rowData = value;
   }
+
   private _rowData?: number;
 
   constructor(
     private dataService: DataService,
     private ref: ChangeDetectorRef
-  ) {}
+  ) {
+    afterRender(() => {
+      console.log('board rendered')
+    })
+  }
 
   ngOnInit() {
     setTimeout(this.initialize.bind(this));
   }
 
+  checkRender() {
+    console.log('board rendered')
+  }
+
   private initialize() {
     this.dataService.sbj.subscribe((data: any) => {
       this.rowData = data;
-      this.ref.markForCheck();
-      this.ref.detectChanges();
+      // this.ref.detectChanges();
     });
   }
 }
