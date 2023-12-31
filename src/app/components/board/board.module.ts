@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {BoardComponent} from "./board.component";
 import {DataService} from "../../services/data.service";
-import { BoardCellComponent } from './board-cell/board-cell.component';
+import { BoardRowComponent } from './board-row/board-row.component';
+import { BoardHeaderComponent } from './board-header/board-header.component';
 
 @NgModule({
-  declarations: [BoardComponent, BoardCellComponent],
+  declarations: [BoardComponent, BoardRowComponent, BoardHeaderComponent],
   imports: [
     CommonModule
   ],

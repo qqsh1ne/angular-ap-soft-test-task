@@ -1,4 +1,4 @@
-import {Component, OnChanges, SimpleChanges} from '@angular/core';
+import {afterRender, AfterRenderPhase, Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,9 +6,8 @@ import {Component, OnChanges, SimpleChanges} from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent{
-  title = 'angular-ap-soft-test-task';
 
   checkRender() {
-    console.log('app rendered')
+    console.log('app rendered');
   }
 }
