@@ -42,7 +42,6 @@ export class BoardComponent implements OnInit, AfterViewInit {
       row.number = index + 1;
     });
     this.header.rowsCount = this.rowsCount;
-    console.log(this.header);
   }
 
   protected checkRender() {
