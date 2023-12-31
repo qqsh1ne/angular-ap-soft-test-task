@@ -1,2 +1,10 @@
-<p>board works!</p>
-<p>{{rowData}}</p>
+{{checkRender()}}
+<app-board-header/>
+<table>
+  <tr>
+    <th>Сервер</th>
+    <th>Загруженность</th>
+    <th>Занимаемая память</th>
+  </tr>
+  <app-board-row *ngFor="let i of Array.from({length: rowsCount})"/>
+</table>

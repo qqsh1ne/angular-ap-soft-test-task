@@ -1,0 +1,38 @@
+$border-color: #808080;
+
+table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  border-spacing: 0;
+  width: fit-content;
+}
+
+tr {
+  border-bottom: 1px solid $border-color;
+}
+
+td, th {
+  width: 200px;
+  font-family: 'Helvetica', sans-serif;
+  text-align: center;
+  border-right: 1px solid $border-color;
+  height: 30px;
+  padding: 5px 0;
+
+  &:last-child {
+    border: 0
+  }
+}
+
+header {
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
