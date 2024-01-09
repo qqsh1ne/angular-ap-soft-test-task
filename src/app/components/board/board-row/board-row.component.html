@@ -2,5 +2,5 @@
 
 <tr>
   <td>{{number}}</td>
-  <td *ngFor="let value of values">{{value}}%</td>
+  <td *ngFor="let _ of Array(DATA_COLUMNS_COUNT)"><app-board-row-item/></td>
 </tr>

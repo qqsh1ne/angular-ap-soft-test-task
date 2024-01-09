@@ -18,6 +18,9 @@ export class BoardHeaderItemComponent {
     return this._value;
   }
   set value(value: number) {
+    if (this._value === value) {
+      return
+    }
     this._value = value;
     this.ref.detectChanges();
   }

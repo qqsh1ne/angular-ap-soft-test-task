@@ -1,4 +1,6 @@
-import {ChangeDetectorRef, Component} from '@angular/core';
+import {ChangeDetectorRef, Component, QueryList, ViewChildren} from '@angular/core';
+import {DATA_COLUMNS_COUNT} from "../../../consts";
+import {BoardRowItemComponent} from "./board-row-item/board-row-item.component";
 
 @Component({
   selector: 'app-board-row',
@@ -6,8 +8,10 @@ import {ChangeDetectorRef, Component} from '@angular/core';
   styleUrls: ['./board-row.component.scss', '../board.component.scss', '../../../app.component.scss']
 })
 export class BoardRowComponent {
+  // @ts-ignore
+  @ViewChildren(BoardRowItemComponent) cells: QueryList<BoardRowItemComponent>;
+
   private _number: number | undefined;
-  private _values: number[] = [];
 
   constructor(
     private ref: ChangeDetectorRef
@@ -21,16 +25,17 @@ export class BoardRowComponent {
     this._number = value;
     this.ref.detectChanges();
   }
-  get values(): number[] {
-    return this._values;
-  }
 
   set values(value: number[]) {
-    this._values = value;
-    this.ref.detectChanges();
+    this.cells.forEach((cell, index) => {
+      cell.value = value[index];
+    })
   }
 
   protected checkRender() {
     console.log('row rendered')
   }
+
+  protected readonly Array = Array;
+  protected readonly DATA_COLUMNS_COUNT = DATA_COLUMNS_COUNT;
 }
