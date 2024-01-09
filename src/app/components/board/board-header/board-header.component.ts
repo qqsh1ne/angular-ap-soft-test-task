@@ -1,4 +1,5 @@
-import {ChangeDetectorRef, Component} from '@angular/core';
+import {Component, QueryList, ViewChildren} from '@angular/core';
+import {BoardHeaderItemComponent} from "./board-header-item/board-header-item.component";
 
 @Component({
   selector: 'app-board-header',
@@ -6,38 +7,24 @@ import {ChangeDetectorRef, Component} from '@angular/core';
   styleUrls: ['./board-header.component.scss', '../../../app.component.scss', '../board.component.scss']
 })
 export class BoardHeaderComponent {
+  // @ts-ignore
+  @ViewChildren(BoardHeaderItemComponent) items: QueryList<BoardHeaderItemComponent>;
 
-  private _totalLoad: number = 0;
-  private _totalMemory: number = 0;
   private _rowsCount: number = 0;
-
-  constructor(
-    private ref: ChangeDetectorRef
-  ) { }
-
-  get rowsCount(): number {
-    return this._rowsCount;
-  }
 
   set rowsCount(value: number) {
     this._rowsCount = value;
-    this.ref.detectChanges();
-  }
-  get avgLoad(): number {
-    return this._totalLoad / this.rowsCount;
-  }
-
-  get avgMemory(): number {
-    return this._totalMemory / this.rowsCount;
+    // @ts-ignore
+    this.items.get(0).value = value;
   }
 
   set totalLoad(value: number) {
-    this._totalLoad = value;
-    this.ref.detectChanges();
+    // @ts-ignore
+    this.items.get(1).value = value / this._rowsCount;
   }
   set totalMemory(value: number) {
-    this._totalMemory = value;
-    this.ref.detectChanges();
+    // @ts-ignore
+    this.items.get(2).value = value / this._rowsCount;
   }
 
   protected checkRender() {

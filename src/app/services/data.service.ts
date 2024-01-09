@@ -11,7 +11,7 @@ export class DataService {
   getter: BehaviorSubject<number[][]>;
 
   constructor(private zone: NgZone) {
-    const rowsCount = getRandomInt(10, 25);
+    const rowsCount = getRandomInt(10, 30);
     this.getter = new BehaviorSubject(Array.from({length: rowsCount},
       () => Array.from({length: DATA_COLUMNS_COUNT},
         () => getRandomPercent()
@@ -26,16 +26,6 @@ export class DataService {
         );
       }, 1000)
     })
-    // this.getters.forEach((sbj) => {
-    //   this.zone.runOutsideAngular(() => {
-    //     setInterval(() => {
-    //       if (!this.newDataCame()) {
-    //         return
-    //       }
-    //       sbj.next(Array.from({length: DATA_COLUMNS_COUNT}, () => getRandomPercent()))
-    //     }, 1000);
-    //   });
-    // });
   };
 
   getRowsCount() {

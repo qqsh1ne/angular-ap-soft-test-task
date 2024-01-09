@@ -52,7 +52,6 @@ export class BoardComponent implements OnInit, AfterViewInit {
       this.header.totalLoad = totalLoad;
       this.header.totalMemory = totalMemory;
     });
-
   }
 }
 
