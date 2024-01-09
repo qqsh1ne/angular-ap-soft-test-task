@@ -1,4 +1,6 @@
 {{checkRender()}}
 <header>
-  <div>Total rows: {{rowsCount}}</div>
+  <div>Total servers: {{rowsCount}}</div>
+  <div>Avg load: {{avgLoad | number: '.0-2'}}%</div>
+  <div>Avg memory used: {{avgMemory | number: '.0-2'}}%</div>
 </header>

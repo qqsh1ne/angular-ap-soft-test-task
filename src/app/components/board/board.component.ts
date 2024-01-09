@@ -1,12 +1,4 @@
-import {
-  afterRender,
-  AfterRenderPhase, AfterViewInit,
-  ChangeDetectorRef,
-  Component,
-  OnChanges,
-  OnInit, Output, QueryList,
-  SimpleChanges, ViewChildren, ViewChild
-} from '@angular/core';
+import { AfterViewInit, Component, OnInit, QueryList, ViewChildren, ViewChild } from '@angular/core';
 import {DataService} from "../../services/data.service";
 import {BoardRowComponent} from "./board-row/board-row.component";
 import {BoardHeaderComponent} from "./board-header/board-header.component";
@@ -27,7 +19,6 @@ export class BoardComponent implements OnInit, AfterViewInit {
 
   constructor(
     private dataService: DataService,
-    private ref: ChangeDetectorRef
   ) {
     this.rowsCount = 0;
   };
@@ -49,14 +40,17 @@ export class BoardComponent implements OnInit, AfterViewInit {
   }
 
   private initialize() {
-    this.dataService.getters.forEach((sbj, index) => {
-      sbj.subscribe((data) => {
-        if (!data) {
-          return
-        }
+    this.dataService.getter.subscribe((data) => {
+      let totalLoad = 0;
+      let totalMemory = 0;
+      data.forEach((row, index) => {
         // @ts-ignore
-        this.rows.get(index).values = data.slice();
-      })
+        this.rows.get(index).values = row.slice();
+        totalLoad += row[0];
+        totalMemory += row[1];
+      });
+      this.header.totalLoad = totalLoad;
+      this.header.totalMemory = totalMemory;
     });
 
   }
