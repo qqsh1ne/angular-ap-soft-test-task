@@ -1,4 +1,4 @@
-import {afterRender, AfterRenderPhase, Component} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +6,7 @@ import {afterRender, AfterRenderPhase, Component} from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent{
-
-  checkRender() {
+  protected checkRender() {
     console.log('app rendered');
   }
 }

@@ -26,16 +26,6 @@ export class DataService {
         );
       }, 1000)
     })
-    // this.getters.forEach((sbj) => {
-    //   this.zone.runOutsideAngular(() => {
-    //     setInterval(() => {
-    //       if (!this.newDataCame()) {
-    //         return
-    //       }
-    //       sbj.next(Array.from({length: DATA_COLUMNS_COUNT}, () => getRandomPercent()))
-    //     }, 1000);
-    //   });
-    // });
   };
 
   getRowsCount() {

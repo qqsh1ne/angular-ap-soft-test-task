@@ -4,12 +4,14 @@ import {BoardComponent} from "./board.component";
 import {DataService} from "../../services/data.service";
 import { BoardRowComponent } from './board-row/board-row.component';
 import { BoardHeaderComponent } from './board-header/board-header.component';
+import {BoardHeaderModule} from "./board-header/board-header.module";
 
 @NgModule({
   declarations: [BoardComponent, BoardRowComponent, BoardHeaderComponent],
-  imports: [
-    CommonModule
-  ],
+    imports: [
+        CommonModule,
+        BoardHeaderModule
+    ],
   exports: [BoardComponent],
   providers: [DataService]
 })
