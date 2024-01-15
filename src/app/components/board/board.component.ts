@@ -9,9 +9,7 @@ import {BoardHeaderComponent} from "./board-header/board-header.component";
   styleUrls: ['./board.component.scss', '../../app.component.scss']
 })
 export class BoardComponent implements OnInit, AfterViewInit {
-  // @ts-ignore
   @ViewChildren(BoardRowComponent) rows: QueryList<BoardRowComponent>;
-  // @ts-ignore
   @ViewChild(BoardHeaderComponent) header: BoardHeaderComponent;
 
   protected rowsCount: number;
@@ -44,8 +42,7 @@ export class BoardComponent implements OnInit, AfterViewInit {
       let totalLoad = 0;
       let totalMemory = 0;
       data.forEach((row, index) => {
-        // @ts-ignore
-        this.rows.get(index).values = row.slice();
+        this.rows.get(index)!.values = row.slice();
         totalLoad += row[0];
         totalMemory += row[1];
       });

@@ -8,7 +8,6 @@ import {BoardRowItemComponent} from "./board-row-item/board-row-item.component";
   styleUrls: ['./board-row.component.scss', '../board.component.scss', '../../../app.component.scss']
 })
 export class BoardRowComponent {
-  // @ts-ignore
   @ViewChildren(BoardRowItemComponent) cells: QueryList<BoardRowItemComponent>;
 
   private _number: number | undefined;
@@ -21,6 +20,7 @@ export class BoardRowComponent {
   get number(): number | undefined {
     return this._number;
   }
+
   set number(value: number) {
     this._number = value;
     this.ref.detectChanges();
